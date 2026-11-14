@@ -1,0 +1,12 @@
+{{- with .PageInner.Resources.Get .Destination -}}
+  {{- with .Resize "800x webp" -}}
+    <img src="{{ .RelPermalink }}"
+      {{- with $.PlainText }} alt="{{ . }}"{{ end -}}
+    >
+  {{- end -}}
+{{- else -}}
+  <img src="{{ .Destination | safeURL }}"
+    {{- with .PlainText }} alt="{{ . }}"{{ end -}}
+    {{- with .Title }} title="{{ . }}"{{ end -}}
+  >
+{{- end -}}
